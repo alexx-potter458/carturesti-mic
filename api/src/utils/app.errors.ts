@@ -1,0 +1,18 @@
+export enum ErrorKeys {
+  INVALID_CREDENTIALS = 'Invalid email or password',
+  EMAIL_IN_USE = 'Email is already used',
+  INVALID_EMAIL = 'Invalid email',
+  UNAUTHORIZED = 'Unauthorized',
+  TERMS_NOT_ACCEPTED = 'Terms are not accepted',
+  INVALID_PASSWORD = 'The password is incorrect',
+  NOT_SAFE_PASSWORD = 'The password is not safe',
+  INCOMPLETE_NAME = 'Your name is incomplete',
+  REQUIRED_FIELDS_NOT_COMPLETED = 'The required fields are not completed',
+  INCORRECT_FUEL_TYPE = 'Incorrect fuel type',
+  INCORRECT_EVENT_TYPE = 'Incorrect event type',
+  INVALID_YEAR = 'The year is not valid',
+  INVALID_VALUE = 'The value is not valid',
+  USER_NOT_FOUND = 'The user is not found',
+  EVENT_NOT_FOUND = 'The event is not found',
+  NOT_YOUR_CAR = 'The car is not yours',
+}

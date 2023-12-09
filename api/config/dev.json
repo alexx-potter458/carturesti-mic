@@ -1,0 +1,21 @@
+{
+  "listeningPort": {
+    "port": 3000
+  },
+  "db": {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "carkeeper",
+    "password": "carkeeper123!",
+    "database": "carkeep",
+    "schema": "app",
+    "synchronize": false,
+    "logging": false,
+    "migrationsTableName": "migrations",
+    "migrationsRun": true,
+    "migrationsTransactionMode": "each",
+    "entities": ["dist/*/entities/*.entity.js"],
+    "migrations": ["dist/db/migrations/*.js"]
+  }
+}
