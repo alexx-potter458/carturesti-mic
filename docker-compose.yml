@@ -14,3 +14,11 @@ services:
       - "2000:5432"
     volumes:
       - ./volumes/postgres-data:/var/lib/postgresql/data
+  ui:
+    container_name: ui
+    build:
+      context: .
+      dockerfile: ./ui/Dockerfile
+    restart: always
+    ports:
+      - "3000:80"
