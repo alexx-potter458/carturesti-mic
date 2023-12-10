@@ -20,3 +20,20 @@ Shutdown the docker containers:
 ```
 docker compose down
 ```
+
+### Stats:
+
+🗃️ Postgres credetials:
+
+```
+    db: carturesti
+    user: carturar
+    password: parolacarturar
+    port 2000
+```
+
+🗃️ UI port:
+
+```
+3000
+```

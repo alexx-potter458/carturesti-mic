@@ -12,7 +12,7 @@ FROM nginx:1.16.0-alpine
 WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
-COPY --from=builder /app/build .
+COPY --from=builder app/dist .
 
 EXPOSE 80/tcp
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
