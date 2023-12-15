@@ -1,7 +1,5 @@
 {
-  "listeningPort": {
-    "port": 3000
-  },
+  "listeningPort": 4000,
   "db": {
     "type": "postgres",
     "host": "localhost",
