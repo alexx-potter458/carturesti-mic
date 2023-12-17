@@ -22,6 +22,8 @@ export class OrdersService {
   async createOrder(userId: number, orderDetails: CreateOrderDto) {
     const user = await this.usersService.findUserById(userId);
 
+    // check for products and calculate price
+
     const address = await this.addressesService.createAddress(
       orderDetails.address,
     );
@@ -42,7 +44,32 @@ export class OrdersService {
     }
   }
 
-  async prepareOrder() {}
-  async finishOrder() {}
-  async cancelOrder() {}
+  async getAllOrders(userId): Promise<Order[]> {
+    const user = await this.usersService.findUserById(userId);
+    if (user.isAdmin) return await this.ordersRepository.find();
+  }
+
+  async getMyOrders(userId): Promise<Order[]> {
+    const user = await this.usersService.findUserById(userId);
+
+    return await this.ordersRepository.find({
+      where: { user: { id: user.id } },
+    });
+  }
+
+  async prepareOrder(
+    userId: number,
+    orderId: number,
+    newStatus: OrderStatusType,
+  ) {
+    const user = await this.usersService.findUserById(userId);
+
+    if (!(user.isAdmin || newStatus === OrderStatusType.CANCELLED)) return;
+
+    const order = await this.ordersRepository.findOneBy({ id: orderId });
+
+    // in case of cancelled: restore stock
+
+    await this.ordersRepository.save({ ...order, status: newStatus });
+  }
 }
