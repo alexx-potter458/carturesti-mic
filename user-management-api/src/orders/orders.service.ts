@@ -7,6 +7,7 @@ import { CreateOrderDto } from './dtos/create-order.dto';
 import { AddressesService } from 'src/addresses/addresses.service';
 import { OrderStatusType } from 'src/utils/app.constants';
 import { UsersService } from 'src/users/users.service';
+import { Address } from 'src/addresses/entities/address.entity';
 
 @Injectable()
 export class OrdersService {
@@ -49,12 +50,40 @@ export class OrdersService {
     if (user.isAdmin) return await this.ordersRepository.find();
   }
 
-  async getMyOrders(userId): Promise<Order[]> {
+  async getMyOrders(userId: number): Promise<Order[]> {
     const user = await this.usersService.findUserById(userId);
 
     return await this.ordersRepository.find({
       where: { user: { id: user.id } },
     });
+  }
+
+  async getMyAddresses(userId: number) {
+    const user = await this.usersService.findUserById(userId);
+
+    const orders = await this.ordersRepository.find({
+      where: { user: { id: user.id } },
+    });
+
+    const userAddresses: Address[] = [];
+
+    orders.forEach((order) => {
+      let alreadyExists = false;
+      const currentOrder = order.address;
+      userAddresses.forEach((address) => {
+        if (
+          currentOrder.addressLine === address.addressLine &&
+          currentOrder.country === address.country &&
+          currentOrder.county === address.county &&
+          currentOrder.city === address.city
+        )
+          alreadyExists = true;
+      });
+
+      if (!alreadyExists) userAddresses.push(currentOrder);
+    });
+
+    return userAddresses;
   }
 
   async prepareOrder(

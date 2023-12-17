@@ -13,6 +13,13 @@ export class OrdersController {
     return await this.ordersService.getAllOrders(getUserIdFromRequest(request));
   }
 
+  @Get('/addresses')
+  async getMyAddresses(@Req() request: Request) {
+    return await this.ordersService.getMyAddresses(
+      getUserIdFromRequest(request),
+    );
+  }
+
   @Get('/all')
   async getMyOrders(@Req() request: Request) {
     return await this.ordersService.getAllOrders(getUserIdFromRequest(request));
