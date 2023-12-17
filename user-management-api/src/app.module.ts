@@ -9,12 +9,16 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { AddressesModule } from './addresses/addresses.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(config.get<TypeOrmModuleOptions>('db')),
     UsersModule,
     AuthModule,
+    AddressesModule,
+    OrdersModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

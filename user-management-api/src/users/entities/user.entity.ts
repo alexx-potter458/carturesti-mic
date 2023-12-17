@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Auth } from '../../auth/entities/auth.entity';
+import { Order } from '../../orders/entities/orders.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -21,6 +22,9 @@ export class User {
 
   @OneToMany((type) => Auth, (token) => token.user)
   authTokens: Auth[];
+
+  @OneToMany((type) => Order, (order) => order.user)
+  orders: Order[];
 
   async validatePassword(password: string): Promise<boolean> {
     return bcrypt.compare(password, this.password);
