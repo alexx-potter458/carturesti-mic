@@ -1,8 +1,15 @@
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Order } from './orders.entity';
 
-Entity({ name: 'order_products' });
+@Entity({ name: 'order_products' })
 export class OrderProduct {
+  @PrimaryGeneratedColumn()
   id: number;
 
   @OneToOne(() => Order, (Order) => Order.id)

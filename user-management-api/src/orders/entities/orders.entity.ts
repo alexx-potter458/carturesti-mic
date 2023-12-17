@@ -6,9 +6,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { OrderProduct } from './order-products.entity';
 
 @Entity({ name: 'orders' })
 export class Order {
@@ -32,7 +34,12 @@ export class Order {
   @Column({ nullable: false })
   status: OrderStatusType;
 
-  @OneToOne(() => Address, (Address) => Address.id)
+  @OneToOne(() => Address, (Address) => Address.id, { eager: true })
   @JoinColumn({ name: 'address_id' })
   address: Address;
+
+  @OneToMany((type) => OrderProduct, (OrderProduct) => OrderProduct.order, {
+    eager: true,
+  })
+  orderProducts: OrderProduct[];
 }
