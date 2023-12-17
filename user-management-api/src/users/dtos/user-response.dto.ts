@@ -12,8 +12,5 @@ export class UserResponseDto {
   lastName: string;
 
   @Expose()
-  pictureUrl: string;
-
-  @Expose()
-  drivingLicenseExpiryDate: Date;
+  isAdmin: string;
 }

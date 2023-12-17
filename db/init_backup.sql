@@ -348,7 +348,8 @@ CREATE TABLE carturesti_mic.users (
     email character varying(512) NOT NULL,
     first_name character varying(512) NOT NULL,
     last_name character varying(512) NOT NULL,
-    password character varying(512) NOT NULL
+    password character varying(512) NOT NULL,
+    is_admin boolean NOT NULL DEFAULT false
 );
 
 

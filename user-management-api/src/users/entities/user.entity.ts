@@ -20,6 +20,9 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
+  @Column({ name: 'is_admin', nullable: false })
+  isAdmin: boolean;
+
   @OneToMany((type) => Auth, (token) => token.user)
   authTokens: Auth[];
 

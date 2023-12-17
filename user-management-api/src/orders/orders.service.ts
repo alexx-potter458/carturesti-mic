@@ -40,7 +40,9 @@ export class OrdersService {
         order: currentOrder,
       });
     }
-
-    console.log(await this.ordersRepository.findBy({ id: currentOrder.id }));
   }
+
+  async prepareOrder() {}
+  async finishOrder() {}
+  async cancelOrder() {}
 }

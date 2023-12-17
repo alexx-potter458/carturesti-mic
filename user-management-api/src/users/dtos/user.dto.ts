@@ -15,11 +15,5 @@ export class UserDto {
   lastName: string;
 
   @Expose()
-  pictureUrl: string;
-
-  @Expose()
-  drivingLicenseExpiryDate: Date;
-
-  @Expose()
   password: string;
 }

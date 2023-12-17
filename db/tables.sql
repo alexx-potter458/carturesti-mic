@@ -4,6 +4,7 @@ CREATE TABLE "carturesti_mic"."users" (
   "first_name" character varying(512) COLLATE pg_catalog."default" NOT NULL,
   "last_name" character varying(512) COLLATE pg_catalog."default" NOT NULL,
   "password" character varying(512) COLLATE pg_catalog."default" NOT NULL,
+  "is_admin" boolean NOT NULL DEFAULT false
   CONSTRAINT users_pkey PRIMARY KEY (id)
 );
 
