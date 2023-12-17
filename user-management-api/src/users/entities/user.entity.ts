@@ -1,15 +1,8 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Auth } from '../../auth/entities/auth.entity';
 
-@Entity({ name: 'user' })
+@Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -22,12 +15,6 @@ export class User {
 
   @Column({ name: 'last_name', nullable: false })
   lastName: string;
-
-  @Column({ name: 'picture_url' })
-  pictureUrl: string;
-
-  @Column({ name: 'driving_license_expiry_date' })
-  drivingLicenseExpiryDate: Date;
 
   @Column({ nullable: false })
   password: string;
