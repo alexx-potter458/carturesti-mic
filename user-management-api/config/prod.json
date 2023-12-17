@@ -2,7 +2,7 @@
   "listeningPort": 4000,
   "db": {
     "type": "postgres",
-    "host": "localhost",
+    "host": "database",
     "port": 5432,
     "username": "carturar",
     "password": "parolacarturar",

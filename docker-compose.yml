@@ -33,4 +33,4 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - database
+      - user-management-api

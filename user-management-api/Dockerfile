@@ -1,4 +1,4 @@
-FROM node:18.18.0-alpine
+FROM node:18.18.0-slim
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ RUN npm install
 COPY ./user-management-api .
 
 EXPOSE 4000
-CMD [ "npm", "run", "start:dev" ]
+CMD [ "npm", "run", "start" ]

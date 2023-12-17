@@ -3,7 +3,7 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SignUpUserDto } from './dtos/sign-up-user.dto';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { plainToClass } from 'class-transformer';
 import { UserDto } from './dtos/user.dto';
 import { isPlainPasswordValid } from '../utils/app.functions';
