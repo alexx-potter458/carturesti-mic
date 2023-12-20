@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { logo, gif } from "../assets/data";
+import logo from "../assets/book.png";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -14,19 +14,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="p-1 md:p-4 flex items-center justify-between h-10 w-full">
-      <div className="flex flex-row items-center gap-2">
-        <img src={logo} alt="" height={50} width={50} className="dark:hidden" />
-        <img
-          src={gif}
-          alt=""
-          height={20}
-          width={20}
-          className="hidden dark:block"
-        />
+    <div className="my-4 p-1 md:p-4 flex items-center justify-between h-10 w-full">
+      <div className="flex flex-row items-center gap-2 ">
+        <img src={logo} alt="Book logo" height={50} width={50} />
         <span className="text-2xl font-[1000] text-center dark:text-white">
-          SNKR.
-          <span className="font-extrabold text-sm">hub</span>
+          Cărturești
+          <span className="font-extrabold text-sm"> mic</span>
         </span>
       </div>
 
