@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import { Cart, Explore, Signin, Preview, Signup } from "./pages/index";
+import { Cart, Explore, Signin, Preview, Signup, Home } from "./pages/index";
 
 const App = () => {
   const isUserLogged = () => {
@@ -13,7 +13,7 @@ const App = () => {
       {isUserLogged() && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Signin />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/explore" element={<Explore />} />
