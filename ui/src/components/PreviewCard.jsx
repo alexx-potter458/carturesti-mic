@@ -26,8 +26,8 @@ const PreviewCard = ({ shoe }) => {
   const gender = shoe.gender[0];
 
   return (
-    <div>
-      <main className="grid place-items-center min-h-[1300px] md:min-h-screen bg-gray-50 dark:bg-[#121212]">
+    <div className="mt-12">
+      <main className="grid place-items-center bg-gray-50 dark:bg-[#121212]">
         <section className="flex flex-col md:flex-row gap-11 py-10 px-5 bg-white dark:bg-[#1f1b24] dark:hover:bg-[#121015]  rounded-xl shadow-xl hover:shadow-2xl  w-3/4 md:max-w-2xl">
           <div className="text-gray-500 dark:text-white flex flex-col justify-between">
             <img

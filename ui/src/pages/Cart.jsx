@@ -27,8 +27,8 @@ const Cart = () => {
   return (
     <div>
       <div>
-        <div className="w-full min-h-screen flex my-[100px] mx-[30px] md:mx-[100px]">
-          <div className="flex flex-col lg:flex-row gap-x-6">
+        <div className="w-full flex justify-center">
+          <div className="flex flex-row justify-between w-full p-20 gap-x-6">
             <div className="">
               {cart.map((cartItem) => (
                 <CartCard key={cartItem.id} item={cartItem} />

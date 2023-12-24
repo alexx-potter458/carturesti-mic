@@ -17,7 +17,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-[#121212] h-full min-h-screen overflow-x-hidden overflow-y-hidden">
+    <div className="h-full overflow-x-hidden">
       {isUserLogged() && <Navbar />}
 
       <Routes>
