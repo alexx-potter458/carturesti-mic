@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/slices/CartSlice";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { ActionButton } from "../components/ActionButton";
 
 const Card = ({ shoe }) => {
   const cart = useSelector((state) => state.cart);
-  // console.log(shoe);
   const img = shoe.original_picture_url;
   const price = shoe.retail_price_cents;
   const desc = shoe.story_html;
@@ -37,8 +37,8 @@ const Card = ({ shoe }) => {
               className="mx-auto"
             />
             <Link to={`/preview/${id}`}>
-              <button className="absolute bg-slate-600 dark:bg-slate-800 dark:font-semibold text-white text-xs p-1 top-2 right-2 rounded-md animate-pulse">
-                preview
+              <button className="absolute bg-slate-600 dark:bg-slate-800 dark:font-semibold text-white text-xs p-2 top-2 right-2 rounded-3xl animate-pulse">
+                Vizualizează
               </button>
             </Link>
           </div>
@@ -49,21 +49,15 @@ const Card = ({ shoe }) => {
 
           <div className="flex  items-center justify-between">
             {cart.some((item) => item.id === shoe.id) ? (
-              <button
-                onClick={() => remove(shoe.id)}
-                className="bg-red-400 text-white p-2 rounded-md text-sm "
-              >
-                Remove Item
-              </button>
+              <ActionButton
+                slim
+                text={"Elimină"}
+                onAction={() => remove(shoe.id)}
+              />
             ) : (
-              <button
-                onClick={add}
-                className="bg-black dark:bg-slate-800 dark:hover:bg-black text-white p-2 rounded-md text-sm "
-              >
-                Add to Cart
-              </button>
+              <ActionButton slim text={"Adaugă"} onAction={add} />
             )}
-            <span className="text-xl font-semibold">₹ {price}</span>
+            <span className="text-xl font-semibold">{price} lei</span>
           </div>
         </div>
       </div>
