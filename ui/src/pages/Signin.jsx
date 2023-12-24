@@ -22,7 +22,7 @@ const Signin = () => {
   return (
     <div>
       <div className="relative flex flex-col gap-y-4 pt-16 items-center justify-start w-full">
-        <div className="flex flex-col gap-3 w-96 bg-[#1f1b24] p-8 rounded-3xl">
+        <div className="flex flex-col gap-3 w-96 bg-[#1f1b24] p-8 rounded-2xl">
           <h1 className="text-slate-50 text-2xl font-bold">Autentificare</h1>
 
           <Texfiled
