@@ -12,7 +12,7 @@ const Signin = () => {
 
   const handleLogin = () => {
     console.log(email, password);
-    navigate("/explore");
+    navigate("/store");
   };
 
   const goToSignup = () => {
@@ -21,8 +21,8 @@ const Signin = () => {
 
   return (
     <div>
-      <div className="relative flex flex-col gap-y-4 pt-24 items-center justify-start w-full min-h-screen">
-        <div className="flex flex-col gap-3 bg-gray-600 p-8 rounded-3xl">
+      <div className="relative flex flex-col gap-y-4 pt-16 items-center justify-start w-full min-h-screen">
+        <div className="flex flex-col gap-3 w-96 dark:bg-[#1f1b24] p-8 rounded-3xl">
           <h1 className="dark:text-slate-50 text-2xl font-bold">
             Autentificare
           </h1>

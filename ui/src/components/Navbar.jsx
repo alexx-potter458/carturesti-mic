@@ -25,10 +25,13 @@ const Navbar = () => {
 
       <ul className="hidden md:flex text-sm  text-black dark:text-white font-semibold md:tracking-wide  flex-col  gap-2 md:flex-row  md:gap-8">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Acasă</Link>
         </li>
         <li>
-          <Link to="/explore">Explore</Link>
+          <Link to="/store">Magazin</Link>
+        </li>
+        <li>
+          <Link to="/my-account">Contul meu</Link>
         </li>
         <li>
           <Link to="/cart">
