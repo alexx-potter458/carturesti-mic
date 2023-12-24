@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CartCard from "../components/CartCard";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { checkoutCart } from "../redux/slices/CartSlice";
 import { Texfiled } from "../components/Textfield";
 import { ActionButton } from "../components/ActionButton";
@@ -21,7 +21,7 @@ const Cart = () => {
   }, [cart]);
 
   const checkout = () => {
-    toast.success("Order Placed Successfully");
+    toast.success("Comanda a fost realizată cu succes");
     localStorage.removeItem("localCart");
     dispatch(checkoutCart());
     navigate("/");
@@ -49,7 +49,7 @@ const Cart = () => {
                 </div>
               </div>
             ) : (
-              <div className=" h-[200px] w-[300px] md:w-[600px] flex flex-col gap-y-4">
+              <div className="w-[600px] flex flex-col gap-y-4">
                 <div className="flex flex-col gap-y-2">
                   <h1 className="text-xl md:text-4xl font-bold text-slate-300 hover:text-slate-500">
                     Număr total cărți : {cart.length}

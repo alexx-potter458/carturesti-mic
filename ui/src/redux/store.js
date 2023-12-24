@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CartReducer, { setCartFromLocalStorage } from "./slices/CartSlice";
-import { useEffect } from "react";
 
 export const store = configureStore({
   reducer: {
@@ -8,7 +7,6 @@ export const store = configureStore({
   },
 });
 
-// Use subscribe to listen for changes in the store
 store.subscribe(() => {
   const state = store.getState();
   console.log(state);

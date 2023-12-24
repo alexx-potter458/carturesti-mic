@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import logo from "../assets/book.png";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
 
   const [click, setClick] = useState(false);
@@ -13,9 +15,16 @@ const Navbar = () => {
     setClick(!click);
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="my-4 p-1 md:p-4 flex items-center justify-between h-10 w-full">
-      <div className="flex flex-row items-center gap-2 ">
+      <div
+        onClick={goHome}
+        className="flex flex-row items-center gap-2 cursor-pointer"
+      >
         <img src={logo} alt="Book logo" height={50} width={50} />
         <span className="text-2xl font-[1000] text-center dark:text-white">
           Cărturești
@@ -49,7 +58,6 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      {/* hidden max-sm:block */}
       <div className="block md:hidden">
         <button onClick={mobile}>
           {!click && <GiHamburgerMenu className="text-2xl dark:text-white" />}

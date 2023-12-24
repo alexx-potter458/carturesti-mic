@@ -16,12 +16,12 @@ const Card = ({ shoe }) => {
 
   const add = () => {
     dispatch(addToCart(shoe));
-    toast.success("Added to cart");
+    toast.success("Am adăugat pe card!");
   };
 
   const remove = (itemIdx) => {
     dispatch(removeFromCart(itemIdx));
-    toast.error("Removed item from cart");
+    toast.error("Am eliminat produsul!");
   };
 
   return (

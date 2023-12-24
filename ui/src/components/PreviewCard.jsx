@@ -12,10 +12,10 @@ const PreviewCard = ({ shoe }) => {
   const add = () => {
     const shoeInCart = cart.some((item) => item.id === shoe.id);
     if (shoeInCart) {
-      toast.error("You've Already Added This Item");
+      toast.error("Ai adăugat deja acest produs");
     } else {
       dispatch(addToCart(shoe));
-      toast.success("Added to cart");
+      toast.success("Am eliminat produsul!");
     }
   };
 

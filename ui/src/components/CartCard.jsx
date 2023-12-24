@@ -13,7 +13,7 @@ const CartCard = ({ item }) => {
 
   const remove = (itemIdx) => {
     dispatch(removeFromCart(itemIdx));
-    toast.error("Removed item from cart");
+    toast.error("Am eliminat produsul!");
   };
 
   const increase = (id) => {
