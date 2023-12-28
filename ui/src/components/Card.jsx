@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/slices/cart/CartSlice";
+import { addToCart, removeFromCart } from "../redux/slices/cart/slice";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { ActionButton } from "../components/ActionButton";

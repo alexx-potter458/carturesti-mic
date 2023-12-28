@@ -1,4 +1,4 @@
-import { setToken } from "./UserSlice";
+import { setToken } from "./slice";
 import axiosApi from "../../../utils/axios";
 
 const login = (userData) => async (dispatch) => {

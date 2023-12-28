@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CartCard from "../components/CartCard";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { checkoutCart } from "../redux/slices/cart/CartSlice";
+import { checkoutCart } from "../redux/slices/cart/slice";
 import { Texfiled } from "../components/Textfield";
 import { ActionButton } from "../components/ActionButton";
 import toast from "react-hot-toast";
