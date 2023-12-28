@@ -12,9 +12,10 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { login } = userActions;
 
   const handleLogin = async () => {
-    dispatch(userActions.login({ email, password }));
+    dispatch(login({ email, password }));
     navigate("/store");
   };
 

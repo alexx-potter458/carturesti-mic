@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {
@@ -10,15 +10,22 @@ import {
   Home,
   Profile,
 } from "./pages/index";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ToastContainer from "./components/ToastContainer";
+import { userActions } from "./redux/store";
 
 const App = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const { getConnectedUser } = userActions;
 
   const isUserLogged = () => {
     return !!user.token;
   };
+
+  useEffect(() => {
+    if (user.token !== "" && user.token !== null) dispatch(getConnectedUser());
+  }, [user.token]);
 
   const RedirectToHome = () => <Navigate to="/" replace />;
   const RedirectToSignin = () => <Navigate to="/signin" replace />;

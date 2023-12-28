@@ -1,4 +1,4 @@
-import { setToken } from "./slice";
+import { setToken, setUser } from "./slice";
 import { showNotification } from "../toast/slice";
 import axiosApi from "../../../utils/axios";
 
@@ -40,6 +40,21 @@ const logout = () => async (dispatch) => {
 
     localStorage.removeItem("token");
     dispatch(setToken(null));
+    dispatch(setUser(null));
+  } catch (error) {
+    dispatch(
+      showNotification({
+        message: "API: " + error.response.data.message,
+        type: "error",
+      })
+    );
+  }
+};
+
+const getConnectedUser = () => async (dispatch) => {
+  try {
+    const result = await axiosApi.get("/users/connected");
+    dispatch(setUser(result.data));
   } catch (error) {
     dispatch(
       showNotification({
@@ -54,4 +69,5 @@ export default {
   login,
   register,
   logout,
+  getConnectedUser,
 };

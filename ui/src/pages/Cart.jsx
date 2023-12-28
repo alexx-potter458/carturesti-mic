@@ -25,6 +25,11 @@ const Cart = () => {
     dispatch(checkoutCart());
     navigate("/");
   };
+
+  const goToStore = () => {
+    navigate("/store");
+  };
+
   return (
     <div>
       <div>
@@ -44,7 +49,10 @@ const Cart = () => {
                       Coșul este gol
                     </h1>
                   </div>
-                  <ActionButton text={"Explorează librăria"} />
+                  <ActionButton
+                    text={"Explorează librăria"}
+                    onAction={goToStore}
+                  />
                 </div>
               </div>
             ) : (

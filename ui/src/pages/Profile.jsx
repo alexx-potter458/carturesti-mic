@@ -8,9 +8,12 @@ import { userActions } from "../redux/store";
 const Profile = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const { connectedUser } = useSelector((state) => state.user);
+
+  const { logout } = userActions;
 
   const handleLogout = async () => {
-    dispatch(userActions.logout());
+    dispatch(logout());
   };
 
   return (
@@ -24,7 +27,8 @@ const Profile = () => {
                   Contul meu
                 </h1>
                 <h2 className="mt-2 mb-8 text-xl font-bold text-slate-300 hover:text-slate-500">
-                  Olaru Alexandru
+                  {connectedUser?.firstName} {connectedUser?.lastName}
+                  <span className="text-sm"> - {connectedUser?.email}</span>
                 </h2>
               </div>
               <ActionButton text={"Delogare"} onAction={handleLogout} />

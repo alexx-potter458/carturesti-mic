@@ -16,10 +16,11 @@ const Signup = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { register } = userActions;
 
   const handleRegister = () => {
     if (password === passwordAgain) {
-      dispatch(userActions.register({ email, firstName, lastName, password }));
+      dispatch(register({ email, firstName, lastName, password }));
     } else toast.error("Parolele nu coincid");
   };
 
