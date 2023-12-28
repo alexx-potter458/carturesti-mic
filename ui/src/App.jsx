@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   Cart,
   Explore,
@@ -19,18 +19,39 @@ const App = () => {
     return !!user.token;
   };
 
+  const RedirectToHome = () => <Navigate to="/" replace />;
+  const RedirectToSignin = () => <Navigate to="/signin" replace />;
+
   return (
     <div className="h-full overflow-x-hidden">
       {isUserLogged() && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/store" element={<Explore />} />
-        <Route path="/my-account" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/preview/:id" element={<Preview />} />
+        <Route
+          path="/signin"
+          element={isUserLogged() ? <RedirectToHome /> : <Signin />}
+        />
+        <Route
+          path="/signup"
+          element={isUserLogged() ? <RedirectToHome /> : <Signup />}
+        />
+        <Route
+          path="/store"
+          element={isUserLogged() ? <Explore /> : <RedirectToSignin />}
+        />
+        <Route
+          path="/my-account"
+          element={isUserLogged() ? <Profile /> : <RedirectToSignin />}
+        />
+        <Route
+          path="/cart"
+          element={isUserLogged() ? <Cart /> : <RedirectToSignin />}
+        />
+        <Route
+          path="/preview/:id"
+          element={isUserLogged() ? <Preview /> : <RedirectToSignin />}
+        />
       </Routes>
     </div>
   );

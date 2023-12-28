@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleExplore = () => {
-    navigate("/signin");
+    navigate("/store");
   };
 
   return (

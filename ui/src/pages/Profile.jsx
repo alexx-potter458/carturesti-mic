@@ -9,16 +9,8 @@ const Profile = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const [total, setTotal] = useState(0);
-  useEffect(() => {
-    setTotal(
-      cart.reduce((acc, curr) => acc + curr.retail_price_cents * curr.qty, 0)
-    );
-  }, [cart]);
-
   const handleLogout = async () => {
     dispatch(userActions.logout());
-    navigate("/");
   };
 
   return (
