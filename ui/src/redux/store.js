@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CartReducer, { setCartFromLocalStorage } from "./slices/cart/slice";
 import UserReducer, { setToken } from "./slices/user/slice";
+import ToastReducer from "./slices/toast/slice";
 import userActions from "./slices/user/actions";
 
 export const store = configureStore({
   reducer: {
     cart: CartReducer,
     user: UserReducer,
+    toast: ToastReducer,
   },
 });
 

@@ -1,4 +1,5 @@
 import { setToken } from "./slice";
+import { showNotification } from "../toast/slice";
 import axiosApi from "../../../utils/axios";
 
 const login = (userData) => async (dispatch) => {
@@ -8,7 +9,12 @@ const login = (userData) => async (dispatch) => {
     localStorage.setItem("token", result.data);
     dispatch(setToken(result.data));
   } catch (error) {
-    console.error("Login failed:", error);
+    dispatch(
+      showNotification({
+        message: "API: " + error.response.data.message,
+        type: "error",
+      })
+    );
   }
 };
 
@@ -19,7 +25,12 @@ const register = (userData) => async (dispatch) => {
     localStorage.setItem("token", result.data);
     dispatch(setToken(result.data));
   } catch (error) {
-    console.error("Login failed:", error);
+    dispatch(
+      showNotification({
+        message: "API: " + error.response.data.message,
+        type: "error",
+      })
+    );
   }
 };
 
@@ -30,7 +41,12 @@ const logout = () => async (dispatch) => {
     localStorage.removeItem("token");
     dispatch(setToken(null));
   } catch (error) {
-    console.error("Logout failed:", error);
+    dispatch(
+      showNotification({
+        message: "API: " + error.response.data.message,
+        type: "error",
+      })
+    );
   }
 };
 

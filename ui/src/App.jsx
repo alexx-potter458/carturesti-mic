@@ -11,6 +11,7 @@ import {
   Profile,
 } from "./pages/index";
 import { useSelector } from "react-redux";
+import ToastContainer from "./components/ToastContainer";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -25,7 +26,7 @@ const App = () => {
   return (
     <div className="h-full overflow-x-hidden">
       {isUserLogged() && <Navbar />}
-
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
