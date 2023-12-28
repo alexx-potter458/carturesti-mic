@@ -3,15 +3,24 @@ import key from "../assets/key.svg";
 import { ActionButton } from "../components/ActionButton";
 import { Texfiled } from "../components/Textfield";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userActions } from "../redux/store";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    navigate("/store");
+    if (password === passwordAgain) {
+      dispatch(userActions.register({ email, firstName, lastName, password }));
+    } else toast.error("Parolele nu coincid");
   };
 
   const goToSignin = () => {
@@ -37,7 +46,7 @@ const Signup = () => {
             icon={person}
             type={"text"}
             onChange={(event) => {
-              setEmail(event.target.value);
+              setFirstName(event.target.value);
             }}
           />
           <Texfiled
@@ -45,7 +54,7 @@ const Signup = () => {
             icon={person}
             type={"text"}
             onChange={(event) => {
-              setEmail(event.target.value);
+              setLastName(event.target.value);
             }}
           />
           <Texfiled
@@ -61,7 +70,7 @@ const Signup = () => {
             icon={key}
             type={"password"}
             onChange={(event) => {
-              setPassword(event.target.value);
+              setPasswordAgain(event.target.value);
             }}
           />
           <div className="my-1"></div>

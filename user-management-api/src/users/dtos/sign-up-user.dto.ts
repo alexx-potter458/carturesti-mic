@@ -13,7 +13,4 @@ export class SignUpUserDto {
 
   @Expose()
   readonly password: string;
-
-  @Expose()
-  readonly isTermsAccepted: boolean;
 }

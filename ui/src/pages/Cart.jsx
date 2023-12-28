@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { checkoutCart } from "../redux/slices/cart/CartSlice";
 import { Texfiled } from "../components/Textfield";
 import { ActionButton } from "../components/ActionButton";
-
 import toast from "react-hot-toast";
 
 const Cart = () => {

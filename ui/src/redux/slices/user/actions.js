@@ -12,6 +12,17 @@ const login = (userData) => async (dispatch) => {
   }
 };
 
+const register = (userData) => async (dispatch) => {
+  try {
+    const result = await axiosApi.post("/sign-up", { ...userData });
+
+    localStorage.setItem("token", result.data);
+    dispatch(setToken(result.data));
+  } catch (error) {
+    console.error("Login failed:", error);
+  }
+};
+
 const logout = () => async (dispatch) => {
   try {
     await axiosApi.delete("/sign-out");
@@ -25,5 +36,6 @@ const logout = () => async (dispatch) => {
 
 export default {
   login,
+  register,
   logout,
 };

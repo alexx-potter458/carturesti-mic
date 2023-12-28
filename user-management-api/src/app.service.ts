@@ -82,11 +82,5 @@ export class AppService {
         ErrorKeys.INCOMPLETE_NAME,
         HttpStatus.BAD_REQUEST,
       );
-
-    if (!dto.isTermsAccepted)
-      throw new HttpException(
-        ErrorKeys.TERMS_NOT_ACCEPTED,
-        HttpStatus.BAD_REQUEST,
-      );
   }
 }
