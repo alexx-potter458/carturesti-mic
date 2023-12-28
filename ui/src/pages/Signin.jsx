@@ -4,14 +4,17 @@ import { ActionButton } from "../components/ActionButton";
 import { Texfiled } from "../components/Textfield";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userActions } from "../redux/store";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    console.log(email, password);
+  const handleLogin = async () => {
+    dispatch(userActions.login({ email, password }));
     navigate("/store");
   };
 

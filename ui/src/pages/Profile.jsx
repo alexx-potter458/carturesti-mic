@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import CartCard from "../components/CartCard";
 import { useSelector } from "react-redux";
 import { ActionButton } from "../components/ActionButton";
+import { useDispatch } from "react-redux";
+import { userActions } from "../redux/store";
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
   const [total, setTotal] = useState(0);
@@ -12,6 +15,11 @@ const Profile = () => {
       cart.reduce((acc, curr) => acc + curr.retail_price_cents * curr.qty, 0)
     );
   }, [cart]);
+
+  const handleLogout = async () => {
+    dispatch(userActions.logout());
+    navigate("/");
+  };
 
   return (
     <div>
@@ -27,7 +35,7 @@ const Profile = () => {
                   Olaru Alexandru
                 </h2>
               </div>
-              <ActionButton text={"Delogare"} />
+              <ActionButton text={"Delogare"} onAction={handleLogout} />
 
               <h2 className="mt-16 text-xl font-bold text-slate-300 hover:text-slate-500">
                 Favoritele tale

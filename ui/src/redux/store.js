@@ -1,24 +1,49 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CartReducer, { setCartFromLocalStorage } from "./slices/CartSlice";
+import CartReducer, { setCartFromLocalStorage } from "./slices/cart/CartSlice";
+import UserReducer, { setToken } from "./slices/user/UserSlice";
+import userActions from "./slices/user/actions";
 
 export const store = configureStore({
   reducer: {
     cart: CartReducer,
+    user: UserReducer,
   },
 });
 
 store.subscribe(() => {
   const state = store.getState();
-  console.log(state);
   localStorage.setItem("localCart", JSON.stringify(state.cart));
 });
 
 const loadCartFromLocalStorage = () => {
-  const storedCart = localStorage.getItem("localCart");
-  if (storedCart) {
-    const parsedCart = JSON.parse(storedCart);
-
-    store.dispatch(setCartFromLocalStorage(parsedCart));
+  try {
+    const storedCart = localStorage.getItem("localCart");
+    if (storedCart) {
+      const parsedCart = JSON.parse(storedCart);
+      store.dispatch(setCartFromLocalStorage(parsedCart));
+    }
+  } catch (error) {
+    console.error("Error loading cart from local storage:", error);
   }
 };
-loadCartFromLocalStorage();
+
+const loadUserTokenFromLocalStorage = () => {
+  try {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) store.dispatch(setToken(storedToken));
+  } catch (error) {
+    console.error("Error loading user token from local storage:", error);
+  }
+};
+
+const initializeStore = async () => {
+  await Promise.all([
+    loadCartFromLocalStorage(),
+    loadUserTokenFromLocalStorage(),
+  ]);
+};
+
+initializeStore();
+
+export { userActions };
+export default store;

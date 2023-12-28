@@ -10,10 +10,13 @@ import {
   Home,
   Profile,
 } from "./pages/index";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const user = useSelector((state) => state.user);
+
   const isUserLogged = () => {
-    return true;
+    return !!user.token;
   };
 
   return (
