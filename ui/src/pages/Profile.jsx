@@ -25,7 +25,7 @@ const Profile = () => {
     <div>
       <div>
         <div className="w-full flex justify-center">
-          <div className="flex flex-row justify-between w-full p-20">
+          <div className="flex flex-row justify-center gap-x-6 w-full p-20">
             <div className="w-[600px] flex flex-col justify-start gap-y-4">
               <div>
                 <h1 className="dark:text-white md:text-5xl font-bold text-slate-500">

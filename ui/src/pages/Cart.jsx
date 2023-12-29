@@ -45,7 +45,7 @@ const Cart = () => {
     <div>
       <div>
         <div className="w-full flex justify-center">
-          <div className="flex flex-row justify-between w-full p-20 gap-x-6">
+          <div className="flex flex-column justify-center w-full p-20 gap-x-6">
             <div className="flex flex-col gap-y-10">
               {cart.map((cartItem) => (
                 <CartCard key={cartItem.id} item={cartItem} />
@@ -53,18 +53,14 @@ const Cart = () => {
             </div>
 
             {cart.length === 0 ? (
-              <div className="min-w-[320px] md:min-w-[1280px]  flex justify-center">
-                <div className="flex flex-col justify-around  gap-y-10">
-                  <div className="">
-                    <h1 className="text-4xl dark:text-white md:text-6xl font-semibold">
-                      Coșul este gol
-                    </h1>
-                  </div>
-                  <ActionButton
-                    text={"Explorează librăria"}
-                    onAction={goToStore}
-                  />
-                </div>
+              <div className="flex flex-col justify-center  gap-y-10">
+                <h1 className="text-4xl dark:text-white md:text-6xl font-semibold">
+                  Coșul este gol
+                </h1>
+                <ActionButton
+                  text={"Explorează librăria"}
+                  onAction={goToStore}
+                />
               </div>
             ) : (
               <div className="w-[600px] flex flex-col gap-y-4">
