@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import CartCard from "../components/CartCard";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { checkoutCart } from "../redux/slices/cart/slice";
+import { orderActions } from "../redux/store";
 import { Texfiled } from "../components/Textfield";
 import { ActionButton } from "../components/ActionButton";
-import toast from "react-hot-toast";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const { createOrder } = orderActions;
 
   const [total, setTotal] = useState(0);
+  const [country, setCountry] = useState("");
+  const [county, setCounty] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     setTotal(
@@ -20,10 +24,17 @@ const Cart = () => {
   }, [cart]);
 
   const checkout = () => {
-    toast.success("Comanda a fost realizată cu succes");
-    localStorage.removeItem("localCart");
-    dispatch(checkoutCart());
-    navigate("/");
+    dispatch(
+      createOrder({
+        products: cart,
+        address: {
+          country,
+          county,
+          city,
+          addressLine: address,
+        },
+      })
+    );
   };
 
   const goToStore = () => {
@@ -67,10 +78,34 @@ const Cart = () => {
                 </div>
                 <div className="flex flex-col gap-3 w-full bg-[#1f1b24] p-8 rounded-3xl">
                   <h1 className="text-slate-50 text-2xl font-bold">Adresa</h1>
-                  <Texfiled placeholder={"Introdu țară"} type={"text"} />
-                  <Texfiled placeholder={"Introdu județ"} type={"text"} />
-                  <Texfiled placeholder={"Introdu oraș"} type={"text"} />
-                  <Texfiled placeholder={"Introdu adresa"} type={"text"} />
+                  <Texfiled
+                    placeholder={"Introdu țară"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCountry(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu județ"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCounty(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu oraș"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCity(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu adresa"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setAddress(event.target.value);
+                    }}
+                  />
                   <div className="my-1"></div>
                 </div>
                 <ActionButton onAction={checkout} text={"Trimite comanda"} />
