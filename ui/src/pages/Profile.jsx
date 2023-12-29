@@ -8,7 +8,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   const { orders } = useSelector((state) => state.order);
   const { connectedUser } = useSelector((state) => state.user);
-
   const { logout } = userActions;
   const { fetchOrders } = orderActions;
 
