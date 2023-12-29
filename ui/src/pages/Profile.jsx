@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
-import CartCard from "../components/CartCard";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { ActionButton } from "../components/ActionButton";
-import { useDispatch } from "react-redux";
-import { userActions } from "../redux/store";
+import { userActions, orderActions } from "../redux/store";
+import OrderCard from "../components/OrderCard";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const { orders } = useSelector((state) => state.order);
   const { connectedUser } = useSelector((state) => state.user);
 
   const { logout } = userActions;
+  const { fetchOrders } = orderActions;
+
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, []);
+  useEffect(() => {}, [orders]);
 
   const handleLogout = async () => {
     dispatch(logout());
@@ -36,17 +41,14 @@ const Profile = () => {
               <h2 className="mt-16 text-xl font-bold text-slate-300 hover:text-slate-500">
                 Favoritele tale
               </h2>
-              {cart.map((cartItem) => (
-                <CartCard key={cartItem.id} item={cartItem} />
-              ))}
             </div>
 
             <div className="w-[600px] flex flex-col gap-y-4">
               <h2 className="mt-2 text-xl font-bold text-slate-300 hover:text-slate-500">
                 Comenzile tale
               </h2>
-              {cart.map((cartItem) => (
-                <CartCard key={cartItem.id} item={cartItem} />
+              {orders.map((order) => (
+                <OrderCard key={order.id} item={order} />
               ))}
             </div>
           </div>

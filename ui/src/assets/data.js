@@ -100,7 +100,7 @@ export const data = {
         "https://image.goat.com/375/attachments/product_template_pictures/images/020/249/059/original/485842_00.png.png",
       has_picture: true,
       has_stock: true,
-      id: 485842,
+      id: 5,
       keywords: ["underRetail"],
       main_picture_url:
         "https://image.goat.com/750/attachments/product_template_pictures/images/020/249/059/original/485842_00.png.png",
@@ -109,7 +109,7 @@ export const data = {
       nickname: "Crimson Tint",
       original_picture_url:
         "https://image.goat.com/attachments/product_template_pictures/images/020/249/059/original/485842_00.png.png",
-      product_template_id: 485842,
+      product_template_id: 5,
       release_date: "2019-04-12T23:59:59.000Z",
       release_date_unix: 1555113599,
       release_year: 2019,

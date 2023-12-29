@@ -1,14 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CartReducer, { setCartFromLocalStorage } from "./slices/cart/slice";
 import UserReducer, { setToken } from "./slices/user/slice";
+import OrderReducer from "./slices/order/slice";
 import ToastReducer from "./slices/toast/slice";
 import userActions from "./slices/user/actions";
+import orderActions from "./slices/order/actions";
 
 export const store = configureStore({
   reducer: {
     cart: CartReducer,
     user: UserReducer,
     toast: ToastReducer,
+    order: OrderReducer,
   },
 });
 
@@ -47,5 +50,5 @@ const initializeStore = async () => {
 
 initializeStore();
 
-export { userActions };
+export { userActions, orderActions };
 export default store;

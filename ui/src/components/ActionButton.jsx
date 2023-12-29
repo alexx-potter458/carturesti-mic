@@ -12,7 +12,7 @@ const ActionButton = ({
     } rounded-2xl focus:outline-none ${
       isTransparent
         ? "bg-transparent hover:dark:hover:bg-black"
-        : " bg-slate-600 dark:bg-slate-800  hover:dark:hover:bg-black"
+        : " bg-slate-800  hover:bg-black"
     }`}
   >
     {`${text}`}
