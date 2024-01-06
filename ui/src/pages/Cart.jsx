@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CartCard from "../components/CartCard";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { checkoutCart } from "../redux/slices/CartSlice";
-
-import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { orderActions } from "../redux/store";
+import { Texfiled } from "../components/Textfield";
+import { ActionButton } from "../components/ActionButton";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const { createOrder } = orderActions;
 
   const [total, setTotal] = useState(0);
+  const [country, setCountry] = useState("");
+  const [county, setCounty] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     setTotal(
@@ -19,55 +24,87 @@ const Cart = () => {
   }, [cart]);
 
   const checkout = () => {
-    toast.success("Order Placed Successfully");
-    localStorage.removeItem("localCart");
-    dispatch(checkoutCart());
-    navigate("/");
+    dispatch(
+      createOrder({
+        products: cart,
+        address: {
+          country,
+          county,
+          city,
+          addressLine: address,
+        },
+      })
+    );
   };
+
+  const goToStore = () => {
+    navigate("/store");
+  };
+
   return (
     <div>
       <div>
-        <div className="w-full min-h-screen flex my-[100px] mx-[30px] md:mx-[100px]">
-          <div className="flex flex-col lg:flex-row gap-x-6">
-            <div className="">
+        <div className="w-full flex justify-center">
+          <div className="flex flex-column justify-center w-full p-20 gap-x-6">
+            <div className="flex flex-col gap-y-10">
               {cart.map((cartItem) => (
                 <CartCard key={cartItem.id} item={cartItem} />
               ))}
             </div>
 
             {cart.length === 0 ? (
-              <div className="min-w-[320px] md:min-w-[1280px] md:max-h-[100px] flex justify-center">
-                <div className="flex flex-col justify-around gap-y-4 md:gap-y-10">
-                  <div className="">
-                    <h1 className="text-4xl dark:text-white md:text-6xl font-semibold">
-                      Cart is Empty !!
-                    </h1>
-                  </div>
-                  <div className="flex justify-center">
-                    <button className="bg-[#2a2a2a] w-[200px] text-white p-4 rounded-md cursor-pointer hover:bg-black">
-                      <Link to="/explore">Shop Now</Link>
-                    </button>
-                  </div>
-                </div>
+              <div className="flex flex-col justify-center  gap-y-10">
+                <h1 className="text-4xl dark:text-white md:text-6xl font-semibold">
+                  Coșul este gol
+                </h1>
+                <ActionButton
+                  text={"Explorează librăria"}
+                  onAction={goToStore}
+                />
               </div>
             ) : (
-              <div className=" h-[200px] mt-[40px] w-[300px] md:w-[600px] p-4 flex flex-col justify-between">
-                <div>
+              <div className="w-[600px] flex flex-col gap-y-4">
+                <div className="flex flex-col gap-y-2">
                   <h1 className="text-xl md:text-4xl font-bold text-slate-300 hover:text-slate-500">
-                    TOTAL ITEMS : {cart.length}
+                    Număr total cărți : {cart.length}
                   </h1>
-                  <h1 className="text-xl dark:text-white md:text-5xl font-bold text-slate-500">
-                    TOTAL PRICE : ₹ {total}
+                  <h1 className="text-xl dark:text-white md:text-3xl font-bold text-slate-500">
+                    Preț total : {total} lei
                   </h1>
                 </div>
-                <div>
-                  <button
-                    className="bg-[#2a2a2a] w-full text-white p-2 rounded-md cursor-pointer hover:bg-black"
-                    onClick={checkout}
-                  >
-                    Checkout
-                  </button>
+                <div className="flex flex-col gap-3 w-full bg-[#1f1b24] p-8 rounded-3xl">
+                  <h1 className="text-slate-50 text-2xl font-bold">Adresa</h1>
+                  <Texfiled
+                    placeholder={"Introdu țară"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCountry(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu județ"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCounty(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu oraș"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setCity(event.target.value);
+                    }}
+                  />
+                  <Texfiled
+                    placeholder={"Introdu adresa"}
+                    type={"text"}
+                    onChange={(event) => {
+                      setAddress(event.target.value);
+                    }}
+                  />
+                  <div className="my-1"></div>
                 </div>
+                <ActionButton onAction={checkout} text={"Trimite comanda"} />
               </div>
             )}
           </div>

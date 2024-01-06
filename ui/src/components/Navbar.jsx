@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { logo, gif } from "../assets/data";
+import logo from "../assets/book.png";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
 
   const [click, setClick] = useState(false);
@@ -13,29 +15,32 @@ const Navbar = () => {
     setClick(!click);
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="p-1 md:p-4 flex items-center justify-between h-10 w-full">
-      <div className="flex flex-row items-center gap-2">
-        <img src={logo} alt="" height={50} width={50} className="dark:hidden" />
-        <img
-          src={gif}
-          alt=""
-          height={20}
-          width={20}
-          className="hidden dark:block"
-        />
+    <div className="my-4 p-1 md:p-4 flex items-center justify-between h-10 w-full">
+      <div
+        onClick={goHome}
+        className="flex flex-row items-center gap-2 cursor-pointer"
+      >
+        <img src={logo} alt="Book logo" height={50} width={50} />
         <span className="text-2xl font-[1000] text-center dark:text-white">
-          SNKR.
-          <span className="font-extrabold text-sm">hub</span>
+          Cărturești
+          <span className="font-extrabold text-sm"> mic</span>
         </span>
       </div>
 
       <ul className="hidden md:flex text-sm  text-black dark:text-white font-semibold md:tracking-wide  flex-col  gap-2 md:flex-row  md:gap-8">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Acasă</Link>
         </li>
         <li>
-          <Link to="/explore">Explore</Link>
+          <Link to="/store">Magazin</Link>
+        </li>
+        <li>
+          <Link to="/my-account">Contul meu</Link>
         </li>
         <li>
           <Link to="/cart">
@@ -53,7 +58,6 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      {/* hidden max-sm:block */}
       <div className="block md:hidden">
         <button onClick={mobile}>
           {!click && <GiHamburgerMenu className="text-2xl dark:text-white" />}

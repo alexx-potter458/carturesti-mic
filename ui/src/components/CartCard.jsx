@@ -5,7 +5,7 @@ import {
   removeFromCart,
   increaseQty,
   decreaseQty,
-} from "../redux/slices/CartSlice";
+} from "../redux/slices/cart/slice";
 import toast from "react-hot-toast";
 
 const CartCard = ({ item }) => {
@@ -13,7 +13,7 @@ const CartCard = ({ item }) => {
 
   const remove = (itemIdx) => {
     dispatch(removeFromCart(itemIdx));
-    toast.error("Removed item from cart");
+    toast.error("Am eliminat produsul!");
   };
 
   const increase = (id) => {
@@ -28,7 +28,7 @@ const CartCard = ({ item }) => {
 
   return (
     <div>
-      <div className="h-80 w-[310px] md:h-72 md:w-[600px] bg-slate-100 dark:bg-[#1f1b24] dark:hover:bg-[#121015] rounded-2xl hover:shadow-lg mt-[40px] md:mt-[20px]">
+      <div className="h-80 md:h-72 w-[600px] bg-slate-100 dark:bg-[#1f1b24] dark:hover:bg-[#121015] rounded-2xl hover:shadow-lg">
         <div className="">
           <div>
             <img
@@ -46,7 +46,7 @@ const CartCard = ({ item }) => {
 
               <div className="flex justify-evenly gap-x-8 mt-2 md:gap-x-0 md:justify-evenly">
                 <div className="mt-[10px] font-bold">
-                  ₹ {item.retail_price_cents}
+                  {item.retail_price_cents} lei
                 </div>
                 <div>
                   <div className="flex gap-x-6">

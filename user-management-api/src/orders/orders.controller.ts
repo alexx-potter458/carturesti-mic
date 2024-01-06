@@ -9,8 +9,8 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Get()
-  async getAllOrders(@Req() request: Request) {
-    return await this.ordersService.getAllOrders(getUserIdFromRequest(request));
+  async getMyOrders(@Req() request: Request) {
+    return await this.ordersService.getMyOrders(getUserIdFromRequest(request));
   }
 
   @Get('/addresses')
@@ -21,7 +21,7 @@ export class OrdersController {
   }
 
   @Get('/all')
-  async getMyOrders(@Req() request: Request) {
+  async getAllOrders(@Req() request: Request) {
     return await this.ordersService.getAllOrders(getUserIdFromRequest(request));
   }
 
