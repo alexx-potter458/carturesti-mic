@@ -26,7 +26,7 @@ const Card = ({ book }) => {
 
   return (
     <div>
-      <div className="w-[300px] h-[430px] shadow-sm rounded-2xl p-4 bg-slate-50 dark:bg-[#1f1b24] dark:hover:bg-[#121015] dark:text-white dark:outline-none dark:border-none border border-slate-100 outline outline-slate-100  hover:shadow-2xl relative">
+      <div className="w-[300px] shadow-sm rounded-2xl p-4 bg-slate-50 dark:bg-[#1f1b24] dark:hover:bg-[#121015] dark:text-white dark:outline-none dark:border-none border border-slate-100 outline outline-slate-100  hover:shadow-2xl relative">
         <div className=" flex flex-col gap-6">
           <div>
             <img
@@ -43,7 +43,10 @@ const Card = ({ book }) => {
             </Link>
           </div>
 
-          <p className="text-base text-md overflow-y-hidden">{desc}</p>
+          <p className="text-base text-md overflow-y-hidden h-12">
+            {book.title.split(" ").slice(0, 10).join(" ") +
+              (book.title.split(" ").length > 10 ? "..." : "")}
+          </p>
           <p className="text-s">Stoc: {book.quantity} buc.</p>
 
           <div className="flex  items-center justify-between">
