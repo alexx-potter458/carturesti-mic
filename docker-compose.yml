@@ -24,6 +24,17 @@ services:
       - "4000:4000"
     depends_on:
       - database
+  stock-management-api:
+    container_name: stock-management-api
+    build:
+      context: .
+      dockerfile: ./stock-management-api/Dockerfile
+    command: 'php artisan serve --host=0.0.0.0'
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
   ui:
     container_name: ui
     build:
