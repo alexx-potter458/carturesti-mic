@@ -33,6 +33,6 @@ Route::patch('stock/increase/{bookId}', [StockController::class, 'increaseStock'
 Route::patch('stock/decrease/{bookId}', [StockController::class, 'decreaseStock']);
 
 // Favourite books routes
-Route::get('user/books/{userId}', [UsersController::class, 'getFavouriteBooks']);
-Route::post('user/{userId}/add-favourite/{bookId}', [UsersController::class, 'addFavouriteBook']);
-Route::delete('user/{userId}/remove-favourite/{bookId}', [UsersController::class, 'removeFavouriteBook']);
+Route::get('user/books', [UsersController::class, 'getFavouriteBooks']);
+Route::post('user/add-favourite/{bookId}', [UsersController::class, 'addFavouriteBook']);
+Route::delete('user/remove-favourite/{bookId}', [UsersController::class, 'removeFavouriteBook']);
