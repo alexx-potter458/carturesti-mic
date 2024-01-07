@@ -1,28 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PreviewCard from "../components/PreviewCard";
 import { useParams } from "react-router-dom";
 import { data } from "../assets/data";
+import { bookActions } from "../redux/store";
+import { useSelector, useDispatch } from "react-redux";
 
 const Preview = (props) => {
   const { id } = useParams();
-  const shoeId = Number(id);
+  const bookId = Number(id);
+  
+  const dispatch = useDispatch();
+  const { selectedBook } = useSelector((state) => state.book);
+  const { fetchBookById } = bookActions;
 
-  const sneakers = data.sneakers;
+  useEffect(() => {
+    dispatch(fetchBookById(bookId));
+  }, []);
 
-  const filteredItems = sneakers.filter(
-    (s) => s.retail_price_cents !== null && s.story_html !== null
-  );
-
-  const qtyUpdate = filteredItems.map((item) => {
-    return { ...item, qty: 1 };
-  });
-
-  const items = qtyUpdate.filter((item) => item.id === shoeId);
-  const shoe = items[0];
+  useEffect(() => {}, [selectedBook]);
 
   return (
     <div className="">
-      <PreviewCard shoe={shoe} />
+      <PreviewCard book={selectedBook} />
     </div>
   );
 };

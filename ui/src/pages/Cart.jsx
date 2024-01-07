@@ -19,7 +19,7 @@ const Cart = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setTotal(
-      cart.reduce((acc, curr) => acc + curr.retail_price_cents * curr.qty, 0)
+      cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
     );
   }, [cart]);
 

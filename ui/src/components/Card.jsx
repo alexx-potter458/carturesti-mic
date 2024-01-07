@@ -4,18 +4,18 @@ import { addToCart, removeFromCart } from "../redux/slices/cart/slice";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { ActionButton } from "../components/ActionButton";
+import shelf from "../assets/book.png";
 
-const Card = ({ shoe }) => {
+const Card = ({ book }) => {
   const cart = useSelector((state) => state.cart);
-  const img = shoe.original_picture_url;
-  const price = shoe.retail_price_cents;
-  const desc = shoe.story_html;
-  const id = shoe.id;
+  const price = book.price;
+  const desc = book.title;
+  const id = book.id;
 
   const dispatch = useDispatch();
 
   const add = () => {
-    dispatch(addToCart(shoe));
+    dispatch(addToCart(book));
     toast.success("Am adăugat pe card!");
   };
 
@@ -30,10 +30,10 @@ const Card = ({ shoe }) => {
         <div className=" flex flex-col gap-6">
           <div>
             <img
-              src={img}
+              src={shelf}
               width={200}
               height={200}
-              alt="shoe"
+              alt="book"
               className="mx-auto"
             />
             <Link to={`/preview/${id}`}>
@@ -44,15 +44,15 @@ const Card = ({ shoe }) => {
           </div>
 
           <p className="text-base font-medium max-h-[96px] overflow-y-hidden">
-            {desc.split(" ").slice(0, 20).join(" ") + "..."}
+            {desc}
           </p>
 
           <div className="flex  items-center justify-between">
-            {cart.some((item) => item.id === shoe.id) ? (
+            {cart.some((item) => item.id === book.id) ? (
               <ActionButton
                 slim
                 text={"Elimină"}
-                onAction={() => remove(shoe.id)}
+                onAction={() => remove(book.id)}
               />
             ) : (
               <ActionButton slim text={"Adaugă"} onAction={add} />

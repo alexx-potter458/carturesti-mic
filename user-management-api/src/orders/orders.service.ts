@@ -23,7 +23,7 @@ export class OrdersService {
   async createOrder(userId: number, orderDetails: CreateOrderDto) {
     const user = await this.usersService.findUserById(userId);
 
-    // check for products and calculate price
+    // TODO: check for products and calculate price
 
     const address = await this.addressesService.createAddress(
       orderDetails.address,
@@ -97,7 +97,7 @@ export class OrdersService {
 
     const order = await this.ordersRepository.findOneBy({ id: orderId });
 
-    // in case of cancelled: restore stock
+    // TODO: in case of cancelled: restore stock
 
     await this.ordersRepository.save({ ...order, status: newStatus });
   }

@@ -42,9 +42,8 @@ const cancelOrder = (id) => async (dispatch) => {
 const createOrder = (orderData) => async (dispatch) => {
   try {
     orderData.products = orderData.products.map((product) => {
-      return { bookId: product.id, quantity: product.qty };
+      return { bookId: product.id, quantity: product.quantity };
     });
-    console.log(orderData);
     await axiosApi.post(`/orders`, orderData);
 
     dispatch(checkoutCart());

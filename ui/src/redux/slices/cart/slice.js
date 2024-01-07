@@ -13,19 +13,24 @@ const CartSlice = createSlice({
       return [];
     },
     addToCart: (state, action) => {
-      return [...state, action.payload];
+      return [...state, { ...action.payload, quantity: 1 }];
     },
     removeFromCart: (state, action) => {
-      return state.filter((shoe) => action.payload !== shoe.id);
+      return state.filter((book) => action.payload !== book.id);
     },
     increaseQty: (state, action) => {
-      return state.map((shoe) =>
-        shoe.id === action.payload ? { ...shoe, qty: shoe.qty + 1 } : shoe
+      return state.map((book) =>
+        book.id === action.payload
+          ? { ...book, quantity: book.quantity + 1 }
+          : book
       );
     },
     decreaseQty: (state, action) => {
-      return state.map((shoe) =>
-        shoe.id === action.payload ? { ...shoe, qty: shoe.qty - 1 } : shoe
+      console.log(action.payload);
+      return state.map((book) =>
+        book.id === action.payload && book.quantity > 1
+          ? { ...book, quantity: book.quantity - 1 }
+          : book
       );
     },
   },

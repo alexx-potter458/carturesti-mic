@@ -3,8 +3,10 @@ import CartReducer, { setCartFromLocalStorage } from "./slices/cart/slice";
 import UserReducer, { setToken } from "./slices/user/slice";
 import OrderReducer from "./slices/order/slice";
 import ToastReducer from "./slices/toast/slice";
+import BookReducer from "./slices/books/slice";
 import userActions from "./slices/user/actions";
 import orderActions from "./slices/order/actions";
+import bookActions from "./slices/books/actions";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,7 @@ export const store = configureStore({
     user: UserReducer,
     toast: ToastReducer,
     order: OrderReducer,
+    book: BookReducer,
   },
 });
 
@@ -50,5 +53,5 @@ const initializeStore = async () => {
 
 initializeStore();
 
-export { userActions, orderActions };
+export { userActions, orderActions, bookActions };
 export default store;

@@ -7,6 +7,7 @@ import {
   decreaseQty,
 } from "../redux/slices/cart/slice";
 import toast from "react-hot-toast";
+import shelf from "../assets/book.png";
 
 const CartCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -31,23 +32,16 @@ const CartCard = ({ item }) => {
       <div className="h-80 md:h-72 w-[600px] bg-slate-100 dark:bg-[#1f1b24] dark:hover:bg-[#121015] rounded-2xl hover:shadow-lg">
         <div className="">
           <div>
-            <img
-              src={item.original_picture_url}
-              alt=""
-              width={150}
-              height={150}
-            />
+            <img src={shelf} alt="" width={150} height={150} />
           </div>
           <div className="flex  justify-between dark:text-white">
             <div className="flex flex-col ml-[20px] gap-y-2 overflow-y-hidden">
               <div className="text-xs font-bold tracking-normal mr-1 md:text-sm sm:block">
-                {item.story_html.split(" ").slice(0, 28).join(" ") + "..."}
+                {item.title}
               </div>
 
-              <div className="flex justify-evenly gap-x-8 mt-2 md:gap-x-0 md:justify-evenly">
-                <div className="mt-[10px] font-bold">
-                  {item.retail_price_cents} lei
-                </div>
+              <div className="flex justify-evenly gap-x-8 mt-2 md:justify-evenly">
+                <div className="mt-[10px] font-bold">{item.price} lei</div>
                 <div>
                   <div className="flex gap-x-6">
                     <p className="flex ">
@@ -57,7 +51,7 @@ const CartCard = ({ item }) => {
                       >
                         -
                       </button>
-                      <span className="text-lg font-bold">{item.qty}</span>
+                      <span className="text-lg font-bold">{item.quantity}</span>
                       <button
                         className="p-1 ml-2 bg-[#dadada] dark:bg-[#2a2a2a] dark:hover:bg-black dark:border-none border rounded-lg font-bold w-[30px]"
                         onClick={() => increase(item.id)}

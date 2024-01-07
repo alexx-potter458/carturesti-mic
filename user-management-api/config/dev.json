@@ -3,7 +3,7 @@
   "db": {
     "type": "postgres",
     "host": "localhost",
-    "port": 5432,
+    "port": 2000,
     "username": "carturar",
     "password": "parolacarturar",
     "database": "carturesti",
