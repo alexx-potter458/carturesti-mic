@@ -26,7 +26,7 @@ const Card = ({ book }) => {
 
   return (
     <div>
-      <div className="w-[300px] h-[420px] shadow-sm rounded-2xl p-4 bg-slate-50 dark:bg-[#1f1b24] dark:hover:bg-[#121015] dark:text-white dark:outline-none dark:border-none border border-slate-100 outline outline-slate-100  hover:shadow-2xl relative">
+      <div className="w-[300px] h-[430px] shadow-sm rounded-2xl p-4 bg-slate-50 dark:bg-[#1f1b24] dark:hover:bg-[#121015] dark:text-white dark:outline-none dark:border-none border border-slate-100 outline outline-slate-100  hover:shadow-2xl relative">
         <div className=" flex flex-col gap-6">
           <div>
             <img
@@ -34,7 +34,7 @@ const Card = ({ book }) => {
               width={200}
               height={200}
               alt="book"
-              className="mx-auto"
+              className="mx-auto mt-8"
             />
             <Link to={`/preview/${id}`}>
               <button className="absolute bg-slate-600 dark:bg-slate-800 dark:font-semibold text-white text-xs p-2 top-2 right-2 rounded-3xl animate-pulse">
@@ -43,9 +43,8 @@ const Card = ({ book }) => {
             </Link>
           </div>
 
-          <p className="text-base font-medium max-h-[96px] overflow-y-hidden">
-            {desc}
-          </p>
+          <p className="text-base text-md overflow-y-hidden">{desc}</p>
+          <p className="text-s">Stoc: {book.quantity} buc.</p>
 
           <div className="flex  items-center justify-between">
             {cart.some((item) => item.id === book.id) ? (

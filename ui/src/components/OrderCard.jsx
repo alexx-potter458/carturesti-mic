@@ -35,7 +35,7 @@ const OrderCard = ({ item }) => {
             onClick={() => goToPreviewBook(product.bookId)}
             className="text-md hover:bg-black my-2 bg-slate-800 p-4 rounded-2xl flex flex-row justify-between items-center"
           >
-            <div>Book: {product.bookId}</div>
+            <div>{product.title}</div>
             <div className="text-xs">Quantity: {product.quantity}</div>
           </div>
         );

@@ -14,5 +14,5 @@ export enum ErrorKeys {
   INVALID_VALUE = 'The value is not valid',
   USER_NOT_FOUND = 'The user is not found',
   EVENT_NOT_FOUND = 'The event is not found',
-  NOT_YOUR_CAR = 'The car is not yours',
+  INSUFFICIENT_STOCK = 'Insufficient stock',
 }

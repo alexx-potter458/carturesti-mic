@@ -21,4 +21,6 @@ export class OrderProduct {
 
   @Column()
   quantity: number;
+
+  title: any;
 }

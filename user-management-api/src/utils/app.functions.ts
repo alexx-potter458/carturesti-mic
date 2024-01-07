@@ -13,3 +13,9 @@ export const isEmailValid = (email: string): boolean => {
 
   return regex.test(email);
 };
+
+export const getApiUrl = () => {
+  if (process.env.NODE_ENV === 'dev') return 'http://127.0.0.1:8000';
+
+  return 'http://stock-management-api:8000';
+};

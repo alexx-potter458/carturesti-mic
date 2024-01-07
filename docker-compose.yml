@@ -29,7 +29,7 @@ services:
     build:
       context: .
       dockerfile: ./stock-management-api/Dockerfile
-    command: 'php artisan serve --host=0.0.0.0'
+    command: "php artisan serve --host=0.0.0.0"
     restart: always
     ports:
       - "8000:8000"
