@@ -81,8 +81,8 @@ export class OrdersService {
 
     for await (const order of orders) {
       for await (const book of order.orderProducts) {
-        const currentBook = allBooks.find(
-          (item: { id: number }) => (item.id = book.bookId),
+        let currentBook = allBooks.find(
+          (item: { id: number }) => item.id === book.bookId,
         );
 
         book.title = currentBook.title;
